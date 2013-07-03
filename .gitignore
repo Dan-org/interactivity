@@ -1,0 +1,14 @@
+.*
+*.pyc
+/sqlite.db*
+/env
+/_static
+/static
+settings_local.py
+/manage.py
+/wsgi.py
+/nocheckin
+/media
+/discourse
+/data
+cache

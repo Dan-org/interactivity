@@ -1,0 +1,17 @@
+-e git+https://github.com/django/django.git@6a092f24e01b6448f4e5601968db82720c9397de#egg=Django-dev
+-e git+https://github.com/Dan-org/Discourse.git#egg=discourse
+wsgiref==0.1.2
+
+django-ttag         # to support template tags in content_tags
+
+jsonfield==0.9.2
+django_compressor
+-e git://github.com/Kronuz/pyScss.git@d01e36a189d183b3384824cb1dbd046bbc0ba532#egg=pyScss-dev
+BeautifulSoup       # For Django Compressor
+
+# Custom yamlfield to take care of the security vulnerabilities of YAML
+-e git+https://github.com/DeadWisdom/django-yamlfield.git#egg=yamlfield
+
+pyyaml
+
+

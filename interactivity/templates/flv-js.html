@@ -1,0 +1,8 @@
+{% load staticfiles %}
+<script src="{% static 'flowplayer/flowplayer-3.2.11.min.js' %}"></script>
+
+{% for id in player_ids %}
+<script type="text/javascript">
+    flowplayer('{{ id|safe }}', "{% static 'flowplayer/flowplayer-3.2.15.swf' %}", { clip:{ autoPlay: false,  autoBuffering: true } });
+</script>
+{% endfor %}
