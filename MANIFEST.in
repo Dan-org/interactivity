@@ -1,0 +1,2 @@
+recursive-include laboratory/static *
+recursive-include laboratory/templates *

@@ -1,6 +1,7 @@
 .*
 *.pyc
 /sqlite.db*
+/db.sqlite3*
 /env
 /_static
 /static
@@ -8,7 +9,8 @@ settings_local.py
 /manage.py
 /wsgi.py
 /nocheckin
-/media
+# commit media because that's where interactivities are stored
+#/media
 /discourse
 /data
 cache
