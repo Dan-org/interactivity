@@ -1,5 +1,5 @@
 """
-Django settings for interactivitysite project.
+Django settings for example project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'interactivity',
-    'interactivitysite',
+    'example',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,9 +51,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'interactivitysite.urls'
+ROOT_URLCONF = 'example.urls'
 
-WSGI_APPLICATION = 'interactivitysite.wsgi.application'
+WSGI_APPLICATION = 'example.wsgi.application'
 
 
 # Database
@@ -114,6 +114,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 ### FIXTURES ###
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
 FIXTURE_DIRS = (
-    normpath(join(BASE_DIR, 'interactivitysite/fixtures')),
+    normpath(join(BASE_DIR, 'example/fixtures')),
 )
 

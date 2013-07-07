@@ -1,7 +1,5 @@
 -e git+https://github.com/django/django.git@6a092f24e01b6448f4e5601968db82720c9397de#egg=Django-dev
--e git+https://github.com/Dan-org/Discourse.git#egg=discourse
 wsgiref==0.1.2
-
 
 django-ttag         # to support template tags in content_tags
 
