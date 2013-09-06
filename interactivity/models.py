@@ -50,7 +50,7 @@ class InteractivityExercise(models.Model):
     """
     Specifies any initial information needed to start the superactivity, e.g., the instructions.
     """    
-    interactivity  = models.ForeignKey(Interactivity);    
+    interactivity  = models.ForeignKey(Interactivity, related_name="exercises");    
     name           = models.CharField(max_length=255, unique=True)
     content        = models.TextField()    #xml content
     

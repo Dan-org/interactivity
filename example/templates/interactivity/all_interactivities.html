@@ -1,0 +1,30 @@
+{% load interactivity %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{{STATIC_URL}}style.css">
+        <script type="text/javascript" src="{{STATIC_URL}}jquery.js"></script>        
+    </head>
+    
+    <body>
+        <div class="layout">
+            <h1>Interactivities</h1>
+            <p>Click to view each interactivity/exercise in database:</p>            
+            
+            {% for interactivity in interactivities %}
+                <h3>{{ interactivity.name }}</h3>
+                <hr/>
+                <ul>
+                {% for exercise in interactivity.exercises.all %}
+                    <li><a href="{% url 'exercise' exercise_id=exercise.id %}">{{ exercise.name }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endfor %}
+
+            
+        </div>
+    </body>
+
+</html>

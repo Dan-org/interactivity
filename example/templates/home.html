@@ -8,11 +8,20 @@
         <script type="text/javascript" src="{{STATIC_URL}}jquery.js"></script>
         {% interactivity_header 'cct-exercise1' %}
     </head>
+    
     <body>
         <div class="layout">
             <h1>Interactivity demo</h1>
+            <p>Interactivity app provides the following views:</p>            
+            
+            <ul>                
+                <li><a href="{% url 'all_interactivities' %}">interactivities</a> -- a list of all the interactivities in the database</li>
+                <li><a href="">exercise</a> -- a view of a specific interactivity/exercise (here's an example)</li>
+            </ul>
 
+            <h1>Interactivity demo</h1>
             {% interactivity %}            
         </div>
     </body>
+
 </html>

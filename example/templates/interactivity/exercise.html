@@ -1,0 +1,20 @@
+{% load interactivity %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="{{STATIC_URL}}style.css">
+        <script type="text/javascript" src="{{STATIC_URL}}jquery.js"></script>
+        {% interactivity_header 'cct-exercise1' %}
+    </head>
+    
+    <body>
+        <div class="layout">            
+            <h2>Exercise: {{ exercise_name }} </h2>
+            <p>&nbsp;</p>
+            {% interactivity %}            
+        </div>
+    </body>
+
+</html>
