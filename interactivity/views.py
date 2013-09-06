@@ -9,9 +9,6 @@ from django.template import RequestContext
 from interactivity.models import Interactivity, InteractivityExercise
 
 
-def hi(request):
-    return render(request, 'interactivity/interactivity.html', locals())
-
 def exercise(request, exercise_id):
     exercise_name = InteractivityExercise.objects.get(pk=exercise_id).name
     return render(request, 'interactivity/exercise.html', locals())
