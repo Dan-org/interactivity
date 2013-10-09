@@ -56,6 +56,8 @@ def beginSession(request, auth_token, interactivitysession_id):
         # get the records in the saved work directory
         records = _get_file_records(interactivitysession_id)        
         
+        print "records: %s" % records
+
         # will now get session id from SuperActivitySessiion
         sas = InteractivitySession.objects.get(pk=interactivitysession_id)
                 
@@ -248,7 +250,7 @@ def _get_file_records(interactivitysession_id):
         ias = InteractivitySession.objects.get(id=interactivitysession_id)
         for work in ias.get_all_work(): 
             fr = FileRecordVo(work.attempt, 'saved_work', '?', work.created_date, 'application/xml')
-            records.apppend(fr)
+            records.apppend(fr)        
         return records
     except:
         err = "Fail! Don't know why"
