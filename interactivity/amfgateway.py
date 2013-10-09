@@ -249,11 +249,11 @@ def _get_file_records(interactivitysession_id):
     try:
         ias = InteractivitySession.objects.get(id=interactivitysession_id)
         for work in ias.get_all_work(): 
-            fr = FileRecordVo(work.attempt, 'saved_work', '?', work.created_date, 'application/xml')
-            records.apppend(fr)        
+            fr = FileRecordVO(work.attempt, 'saved_work', '?', work.created_date, 'application/xml')
+            records.append(fr)            
         return records
     except:
-        err = "Fail! Don't know why"
+        err = "_get_file_records Fail! Don't know why"
         return None    
     
 def _is_authenticated(request):
