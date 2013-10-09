@@ -57,7 +57,7 @@ Run tests
 
 Save fixtures
 ------
-./manage.py dumpdata quiz.Quiz quiz.Attempt quiz.Answer > quiz/fixtures/quiz_testing.json
+./manage.py dumpdata interactivity.Interactivity interactivity.InteractivityExercise auth.User > example/fixtures/initial_data.json
 
 Load fixtures
 ------

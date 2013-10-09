@@ -139,7 +139,8 @@ def loadFileRecord(request, interactivitysession_id, attempt_number, file_name):
     try:                
         ias = InteractivitySession.objects.get(id=interactivitysession_id)
         data = ias.get_work(attempt_number)
-        response = LoadFileRecordResponseVO(None, data)
+        response = LoadFileRecordResponseVO(None, data.content)
+        #print " data: %s" % data.content
         return response
     except IOError as e:
         err = "LoadFileRecord could not open file %s" % path
@@ -168,7 +169,7 @@ def saveFileRecord(request, interactivitysession_id, attempt_number, file_name, 
         err = "SaveFileRecord could not open file %s" % path
     except BaseException, errMsg:
         err = "SaveFileRecord FAIL!  \n %s \n %s" %  (errMsg, traceback.format_exc())
-    #print(err)
+    print(err)
     #print(errMsg)
     #tb = traceback.format_exc()
     #print(tb)
@@ -236,7 +237,7 @@ def log(request, log_xml):
     except BaseException, errMsg:
         err = "Log FAIL!  \n %s \n %s" %  (errMsg, traceback.format_exc())
         print(err)
-        return SuperactivityServerResponseVO("Log FAIL! I don't know why")
+        #return SuperactivityServerResponseVO("Log FAIL! I don't know why")
 
 
 """
