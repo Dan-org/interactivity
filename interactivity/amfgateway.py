@@ -245,12 +245,16 @@ Private
 
 
 def _get_file_records(interactivitysession_id):
+    #print "getting file records"
     records = []
     try:
         ias = InteractivitySession.objects.get(id=interactivitysession_id)
         for work in ias.get_all_work(): 
+            #print "  work: %s  %s  %s" % (work, work.attempt, work.created_date)
             fr = FileRecordVO(work.attempt, 'saved_work', '?', work.created_date, 'application/xml')
-            records.append(fr)            
+            #print "  fr: %s" % fr
+            records.append(fr)    
+        #print "  records: %s" % records
         return records
     except:
         err = "_get_file_records Fail! Don't know why"
