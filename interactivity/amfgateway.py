@@ -136,9 +136,9 @@ def loadFileRecord(request, interactivitysession_id, attempt_number, file_name):
     print('loadFileRecord')
     if not _is_authenticated(request):
         return LoadFileRecordResponseVO("Load File Record FAIL: Not authenticated", None)
-    try:        
+    try:                
         ias = InteractivitySession.objects.get(id=interactivitysession_id)
-        data = ias.load_file(attempt_number, file_name)
+        data = ias.get_work(attempt_number)
         response = LoadFileRecordResponseVO(None, data)
         return response
     except IOError as e:
