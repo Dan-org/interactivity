@@ -68,7 +68,7 @@ class InteractivityWork(models.Model):
     Represents students saved work after using interactivity.
     """
     user            = models.ForeignKey(settings.AUTH_USER_MODEL);    
-    exercise        = models.ForeignKey(InteractivityExercise)
+    exercise        = models.ForeignKey(InteractivityExercise, related_name="work")
     attempt         = models.IntegerField(default=0)
     created_date    = models.DateTimeField(auto_now_add=True)
     saved_date      = models.DateTimeField(auto_now_add=True)
