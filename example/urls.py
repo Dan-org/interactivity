@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 
 
     url(r'^interactivity/', include('interactivity.urls')),
+    url(r'^policyworld/', include('policyworld.urls')),
 )
 
 

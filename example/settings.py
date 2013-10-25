@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'interactivity',
-    'example',
+    'example',    
+    'policyworld',
 )
 
 MIDDLEWARE_CLASSES = (

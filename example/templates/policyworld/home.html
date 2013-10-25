@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+
+
+
+<div class="general wrapper clearfix">
+      <hgroup>              
+        <h1>Policy World</h1>        
+      </hgroup>
+    
+    <article>
+    	<section>         
+        	<p>Here you can see data about the different Policy World exercises.</p>
+
+        	{% for exercise in exercises %}
+        		<p><a href="{% url 'policyworldexercise' exercise.id %}">{{ exercise }}</a><p>
+        	{% endfor %}
+        	
+        </section>
+    </article>
+
+	<aside>
+		<section>
+			
+		</section>
+    </article>
+
+{% endblock %}

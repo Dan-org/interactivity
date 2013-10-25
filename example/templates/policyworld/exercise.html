@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+
+{% block bodyclass %}template-one{% endblock %}
+
+{% block content %}
+
+<div class="wrapper clearfix">
+      <hgroup>              
+        <h1>Policy World</h1>        
+      </hgroup>
+    
+    <article>
+    	<section>         
+    		<h1>{{ exercise }}</h1>
+
+        	<p>Here you can see the work for this exercise</p>
+
+        	<h1></h1>
+        	<table class="policyworldexercise">
+        		<thead>
+        			<tr>
+        				<th>&nbsp;</th>
+        				<th>Name</th>
+        				<th>Score</th>
+        			</tr>
+        		</thead>
+        		<tbody>
+		        	{% for row in rows %}
+		        	<tr>
+		        		<td>{{ forloop.counter }}</td>
+		        		<td><a href="{% url 'policyworldwork' row.work.id %}">{{ row.work.user }}</a></td>
+		        		<td>...</td>
+		        	</tr>
+		        	{% endfor %}        	
+		        </tbody>
+        	</table>
+        
+
+        </section>
+    </article>
+
+	<aside>
+		<section>
+			
+		</section>
+    </article>
+
+{% endblock %}

@@ -1,4 +1,4 @@
--e git+https://github.com/django/django.git@6a092f24e01b6448f4e5601968db82720c9397de#egg=Django-dev
+#-e git+https://github.com/django/django.git@6a092f24e01b6448f4e5601968db82720c9397de#egg=Django-dev
 wsgiref==0.1.2
 
 django-ttag         # to support template tags in content_tags
@@ -6,5 +6,5 @@ django-ttag         # to support template tags in content_tags
 # don't use pyamf because it doesn't work with Django 1.6 yet, so use our custom repository
 -e git+https://github.com/easterday/pyamf.git#egg=pyamf
 
-
+lxml
 
