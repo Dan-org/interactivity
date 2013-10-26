@@ -222,9 +222,16 @@ def log(request, log_xml):
         
         #print(">>>> LOG: %s %s %s %s %s" % (interactivity_session_id, action_id, info_type, info, dt))            
         
+        #print ias.user.id
+        #print ias.exercise.name
+
         actionlog = ActionLog(#user=user,
                               #activity=activity,                              
-                              session=ias,
+                              
+                              session_id=ias.session_id,
+                              user_id=ias.user.id,
+                              exercise_name=ias.exercise.name,
+
                               action_id=action_id,
                               date_time=dt,
                               info_type=info_type,

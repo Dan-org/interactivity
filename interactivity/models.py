@@ -141,10 +141,14 @@ class ActionLog(models.Model):
     """
     The ActionLog records some user activity from the loft of interactivity and an optional associated bit of data, usually XML.
     """    
-    session             = models.ForeignKey(InteractivitySession)
+    #session             = models.ForeignKey(InteractivitySession)
     #user                = models.ForeignKey(User)                                   # link action log to particular user, activity and session
     #session_id          = models.CharField(max_length=50)                           # session_id: optionally provided by loft for grouping by logging session
-        
+    
+    session_id          = models.CharField(max_length=50)
+    user_id             = models.IntegerField()
+    exercise_name       = models.CharField(max_length=255)
+
     # information related to the action
     action_id           = models.CharField(max_length=50)                           # action_id: identifes the type of action (e.g. START_ATTEMPT)
     date_time           = models.DateTimeField()                                    # date_time: timestamp for action
