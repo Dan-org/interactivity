@@ -71,7 +71,8 @@ def get_xml(saved_work_data):
 
     saved_work_data = saved_work_data.replace('<?xml version="1.0" encoding="UTF-8"?>', '')
 
-    print saved_work_data
+    #print saved_work_data
+    # print saved_work_data.encode('ascii', 'ignore')
     save_xml = etree.XML(saved_work_data, parser)
     return save_xml
                     
