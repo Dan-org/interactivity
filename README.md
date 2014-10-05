@@ -37,7 +37,10 @@ Step 4:
   ...
   Would you like to create one now? (yes/no):
 
-It will ask you to create a user, go ahead and create one for yourself.  That user will only be local to *your* machine so don't expect it to be anywhere else.  If this fails, or you want to create a user later see "Creating An Admin User Via The Command Line", below.  Also, there is by default a user with email "admin@designforamerica.com" and password "pass".
+It will ask you to create a user, go ahead and create one for yourself.  That user will only be local to *your* machine so don't expect it to be anywhere else.  If this fails, or you want to create a user later see "Creating An Admin User Via The Command Line", below.  
+
+Note that by default, the initial_data.json will be loaded with a user with username "admin" and password "pass".
+
 
 Step 5:
   
@@ -53,7 +56,8 @@ Changes you make should automatically up
 
 Run tests
 ------
-./manage.py test quiz
+./manage.py test interactivity
+
 
 Save fixtures
 ------

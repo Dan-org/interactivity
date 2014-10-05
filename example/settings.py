@@ -40,7 +40,7 @@ INSTALLED_APPS = (
 
     'interactivity',
     'example',    
-    'policyworld',
+    #'policyworld',
 )
 
 MIDDLEWARE_CLASSES = (

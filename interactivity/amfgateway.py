@@ -31,7 +31,7 @@ def loadClientConfig(request):
     return "load client config response"
 
 def beginSession(request, auth_token, interactivitysession_id):
-    
+    print("BEGIN SESSION!!!");
     """
     Starts a interactivity session and sets credentials so that other commands can be called.
     """
@@ -239,12 +239,20 @@ def log(request, log_xml):
                               #external_object_id=external_object_id,                              
                               )
         actionlog.save()
-        print("LOG IGNORED SUPPLEMENTS!")
-#        return SuperactivityServerResponseVO(None)
+        
+        for supplement_xml in log_xml.findall('supplementLog'):
+            slog = SupplementLog(   actionlog=actionlog,
+                                    action_id=supplement_xml.attrib.get('action_id'),
+                                    info_type=supplement_xml.attrib.get('info_type'),
+                                    info=supplement_xml.text,
+                                    )
+            slog.save();
+
+        return SuperactivityServerResponseVO(None)
     except BaseException, errMsg:
         err = "Log FAIL!  \n %s \n %s" %  (errMsg, traceback.format_exc())
         print(err)
-        #return SuperactivityServerResponseVO("Log FAIL! I don't know why")
+        return SuperactivityServerResponseVO("Log FAIL! I don't know why")
 
 
 """
