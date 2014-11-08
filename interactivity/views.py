@@ -17,3 +17,20 @@ def exercise(request, exercise_id):
 def all_interactivities(request):
 	interactivities = Interactivity.objects.all()
 	return render(request, 'interactivity/all_interactivities.html', locals())
+
+
+
+
+from pyamf.remoting.client import RemotingService
+import logging
+
+def hello(request):
+	logging.basicConfig(
+    	level=logging.DEBUG,
+		format='%(asctime)s %(levelname)-5.5s [%(name)s] %(message)s'
+	)
+	gw = RemotingService('http://127.0.0.1:8000/interactivity/', logger=logging)
+	service = gw.getService('interactivity')
+	output = service.hello()
+    #print output
+	return render(request, 'interactivity/hello.html', locals())
