@@ -68,7 +68,11 @@ class FlashInteractivityHeaders(ttag.Tag):
         # get rid of old sessions
         InteractivitySession.objects.delete_old()
         
-        interactivityServer     = 'http://%s/interactivity/' % request.META['HTTP_HOST']   # must match path in superactity/urls.py     
+        scheme = "http"
+        if request.is_secure():
+            scheme = "https"
+
+        interactivityServer     = '%s://%s/interactivity/' % (scheme, request.META['HTTP_HOST'])   # must match path in superactity/urls.py     
         authenticationToken     = _create_auth_token(request)                
         interactivitySessionId  = ias.id  #  NEED TO FIGURE THIS OUT... activity.id
         #resourceTypeId          = "???"
