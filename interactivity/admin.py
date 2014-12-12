@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib import admin
 
-from models import ActionLog, SupplementLog, Interactivity, InteractivityExercise, InteractivityWork, SessionAlias, InteractivitySession
+from models import ActionLog, SupplementLog, Interactivity, InteractivityExercise, InteractivityWork, InteractivitySession
+# SessionAlias, 
 
 ### Custom Admins ###
 class SessionAdmin(admin.ModelAdmin):
@@ -20,5 +21,5 @@ admin.site.register(InteractivityWork)
 admin.site.register(ActionLog)
 admin.site.register(SupplementLog)
 
-admin.site.register(SessionAlias, SessionAdmin)
+#admin.site.register(SessionAlias, SessionAdmin)
 admin.site.register(InteractivitySession, InteractivitySessionAdmin)

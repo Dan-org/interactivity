@@ -52,6 +52,12 @@ Step 5:
 This will start up the server, running.  Visit http://127.0.0.1:8000/ in your browser now.
 Changes you make should automatically up
 
+Note that default admin user is:
+  name:     admin
+  password: pass
+
+You can see a list of the interactivities at:
+http://127.0.0.1:8000/interactivity/all/
 
 
 Run tests
