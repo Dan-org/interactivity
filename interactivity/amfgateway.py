@@ -83,6 +83,7 @@ def beginSession(request, interactivitysession_id):
     except:
         err = "Begin session FAIL! I don't know why"
         print(err)
+        print(traceback.format_exc())
         return BeginSessionResponseVO(err, None, None)
     
     
