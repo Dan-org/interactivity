@@ -30,40 +30,54 @@ pyamf.register_class(UserVO,                                    'edu.nu.mwe.loft
 def loadClientConfig(request):
     return "load client config response"
 
-def beginSession(request, auth_token, interactivitysession_id):
+def beginSession(request, interactivitysession_id):
     print("BEGIN SESSION!!!");
     """
     Starts a interactivity session and sets credentials so that other commands can be called.
     """
     print('beginSession %s' % request.session.session_key)    
     try:
-        a = SessionAlias.objects.get( alias=auth_token )
-        session_engine = __import__( settings.SESSION_ENGINE, {}, {}, [''] )
-        session_wrapper = session_engine.SessionStore( a.session.session_key )
+        #a = SessionAlias.objects.get( alias=auth_token )
+        #session_engine = __import__( settings.SESSION_ENGINE, {}, {}, [''] )
+        #session_wrapper = session_engine.SessionStore( a.session.session_key )
         
-        user_id = session_wrapper.get( SESSION_KEY )
+        # user_id = session_wrapper.get( SESSION_KEY )
         
-        if(user_id != None):
-            auth.get_user_model()            
-            user = auth.get_user_model().objects.get(id=user_id)
+        # if(user_id != None):
+        #     auth.get_user_model()            
+        #     user = auth.get_user_model().objects.get(id=user_id)
+        #     user.backend='django.contrib.auth.backends.ModelBackend'                
+        #     auth.login( request, user )
+        # else:
+        #     user = None        
+        #a.delete()
+
+        sas = InteractivitySession.objects.get(pk=interactivitysession_id)
+        
+        print repr(sas)
+
+        user = sas.user
+
+        print repr(user)        
+
+        if(user != None):
+            #auth.get_user_model()            
+            #user = auth.get_user_model().objects.get(id=user_id)
             user.backend='django.contrib.auth.backends.ModelBackend'                
             auth.login( request, user )
-        else:
-            user = None        
-        
-        a.delete()
-        
+    
         # get the records in the saved work directory
         records = _get_file_records(interactivitysession_id)        
         
         print "records: %s" % records
 
         # will now get session id from SuperActivitySessiion
-        sas = InteractivitySession.objects.get(pk=interactivitysession_id)
+        #sas = InteractivitySession.objects.get(pk=interactivitysession_id)
                 
         if user != None:            
-            user = UserVO(auth.get_user_model().objects.get(id=user_id))            
-        bsr = BeginSessionResponseVO(None, user, records)
+            #user = UserVO(auth.get_user_model().objects.get(id=user_id)) 
+            uservo = UserVO(user) 
+        bsr = BeginSessionResponseVO(None, uservo, records)
         
         return bsr
     except:
@@ -196,20 +210,23 @@ Logging
 """
 import xml
 
-def log(request, log_xml):
+def log(request, interactivitysession_id, log_xml):
     """
     Save information about user action in interactivity to database.
     """
     if not _is_authenticated(request):
         return SuperactivityServerResponseVO("Log FAIL: Not authenticated")
     
-    print(xml.etree.ElementTree.tostring(log_xml))
+    #print(xml.etree.ElementTree.tostring(log_xml))
+    
     try:
         #should log here...
         #user                = request.user        
-        interactivity_session_id = log_xml.attrib.get('interactivity_session_id') # source id is just the activity id        
-        ias = InteractivitySession.objects.get(pk=interactivity_session_id)        
+        #interactivity_session_id = log_xml.attrib.get('interactivity_session_id') # source id is just the activity id        
+        #ias = InteractivitySession.objects.get(pk=interactivity_session_id)        
         
+        ias = InteractivitySession.objects.get(pk=interactivitysession_id)        
+
         action_id           = log_xml.attrib.get('action_id')        
         info_type           = log_xml.attrib.get('info_type')
         #external_object_id  = log_xml.attrib.get('external_object_id')

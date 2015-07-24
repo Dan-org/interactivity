@@ -82,13 +82,13 @@ class InteractivityWork(models.Model):
         return repr(self)
 
     
-class SessionAlias(models.Model):
-    """
-    Save an alias to the session so that we can send the alias to flash without showing the session
-    """
-    alias   = models.CharField( max_length=40, primary_key=True )
-    session = models.ForeignKey( sessions.models.Session )
-    created = models.DateTimeField( auto_now_add=True )
+# class SessionAlias(models.Model):
+#     """
+#     Save an alias to the session so that we can send the alias to flash without showing the session
+#     """
+#     alias   = models.CharField( max_length=40, primary_key=True )
+#     session = models.ForeignKey( sessions.models.Session )
+#     created = models.DateTimeField( auto_now_add=True )
 
 
 class InteractivitySessionManager(models.Manager):

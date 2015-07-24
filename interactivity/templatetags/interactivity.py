@@ -12,7 +12,7 @@ from xml.etree import ElementTree
 import ttag
 
 from django.contrib import auth
-from ..models import SessionAlias
+#from ..models import SessionAlias
 from ..models import InteractivitySession, InteractivityExercise, InteractivityWork
 
 register = template.Library()
@@ -88,7 +88,10 @@ class FlashInteractivityHeaders(ttag.Tag):
                      'width':width,
                      'height':height,                     
                      'interactivityServer':interactivityServer,
-                     'authenticationToken':authenticationToken,                     
+
+#NOT AUTHO TOKEN BUT SESSION ID...
+
+                     #'authenticationToken':authenticationToken,                     
                      'interactivitySessionId':interactivitySessionId,
                      #'resourceTypeId':resourceTypeId,
                      'condition':condition,
@@ -132,29 +135,32 @@ def _assign_condition():
     pass
 
 
-def _create_auth_token(request):
-    # generates new 40-char random
-    ss = SessionStore()
-    ss.save()
-    k = ss.session_key
+# def _create_auth_token(request):
+#     # generates new 40-char random
+#     ss = SessionStore()
+#     ss.save()
+#     k = ss.session_key
     
-    sa = SessionAlias()
-    sa.alias = k
-    sa.session = Session.objects.get( session_key=request.session.session_key )
-    sa.save(); # have to save to generate the key
+#     sa = SessionAlias()
+#     sa.alias = k
+
+#     print repr(request.session)
+#     #sa.session = Session.objects.get( session_key=request.session.session_key )
+#     sa.session = request.session
+#     sa.save(); # have to save to generate the key
                 
-    # just wanted the key, didn't realy need the session
-    dummy = Session.objects.get(session_key=k);
-    dummy.delete()
+#     # just wanted the key, didn't realy need the session
+#     dummy = Session.objects.get(session_key=k);
+#     dummy.delete()
     
-    # Matt: not sure why need to set a cookie, ok to just send the alias to flash?
-    # generates new 40-char random
-    #randomcookie = SessionStore().session_key               
-    #kwargs['extra_context']['randomcookie'] = randomcookie
-    #response = direct_to_template( request, **kwargs )
-    #response.set_cookie( randomcookie, value=alias )
+#     # Matt: not sure why need to set a cookie, ok to just send the alias to flash?
+#     # generates new 40-char random
+#     #randomcookie = SessionStore().session_key               
+#     #kwargs['extra_context']['randomcookie'] = randomcookie
+#     #response = direct_to_template( request, **kwargs )
+#     #response.set_cookie( randomcookie, value=alias )
         
-    return sa.alias
+#     return sa.alias
 
 
 def _strip_quotes(arg):
