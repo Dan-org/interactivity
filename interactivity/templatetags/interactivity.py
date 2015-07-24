@@ -73,7 +73,7 @@ class FlashInteractivityHeaders(ttag.Tag):
             scheme = "https"
 
         interactivityServer     = '%s://%s/interactivity/' % (scheme, request.META['HTTP_HOST'])   # must match path in superactity/urls.py     
-        authenticationToken     = _create_auth_token(request)                
+        #authenticationToken     = _create_auth_token(request)                
         interactivitySessionId  = ias.id  #  NEED TO FIGURE THIS OUT... activity.id
         #resourceTypeId          = "???"
         
